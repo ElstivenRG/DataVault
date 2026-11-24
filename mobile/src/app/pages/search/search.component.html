@@ -1,0 +1,31 @@
+<ActionBar title="Buscar libros"></ActionBar>
+<GridLayout rows="auto,auto,auto,*" class="screen" (loaded)="search()">
+  <StackLayout row="0">
+    <Label text="Encuentra tu próxima lectura" class="heading" textWrap="true"></Label>
+    <Label text="Busca por título o autor. Vacío muestra todo el catálogo." class="subtitle" textWrap="true"></Label>
+    <TextField [(ngModel)]="query" hint="Título o autor" maxLength="120"
+      returnKeyType="search" (returnPress)="search()" [isEnabled]="!loading()"
+      accessibilityLabel="Título o autor que deseas buscar"></TextField>
+    <Button text="Buscar" (tap)="search()" [isEnabled]="!loading()" class="primary"></Button>
+  </StackLayout>
+  <StackLayout row="1">
+    <Label [text]="error()" [visibility]="error() ? 'visible' : 'collapsed'" class="error" textWrap="true"></Label>
+    <Label [text]="message()" [visibility]="message() ? 'visible' : 'collapsed'" class="success" textWrap="true"></Label>
+  </StackLayout>
+  <ActivityIndicator row="2" [busy]="loading()" [visibility]="loading() ? 'visible' : 'collapsed'"></ActivityIndicator>
+  <ScrollView row="3">
+    <StackLayout>
+      <Label *ngIf="searched() && !loading() && !error() && books().length === 0"
+        text="No hay resultados para esa búsqueda." class="empty" textWrap="true"></Label>
+      <StackLayout *ngFor="let book of books()" class="card">
+        <Label [text]="book.title" class="title" textWrap="true"></Label>
+        <Label [text]="book.author" class="author" textWrap="true"></Label>
+        <Label [text]="book.description" class="description" textWrap="true"></Label>
+        <Button [text]="isFavorite(book.id) ? '★ Guardado' : '☆ Guardar favorito'"
+          [isEnabled]="!isFavorite(book.id) && !pendingIds().includes(book.id)"
+          [accessibilityLabel]="'Guardar ' + book.title + ' como favorito'"
+          (tap)="saveFavorite(book)"></Button>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
+</GridLayout>

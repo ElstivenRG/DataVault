@@ -1,0 +1,9 @@
+<GridLayout rows="*,auto">
+  <page-router-outlet row="0"></page-router-outlet>
+  <GridLayout row="1" columns="*,*,*,*" class="nav">
+    <Button col="0" text="Inicio" nsRouterLink="/home" accessibilityLabel="Ir a inicio"></Button>
+    <Button col="1" text="Buscar" nsRouterLink="/search" accessibilityLabel="Buscar libros"></Button>
+    <Button col="2" text="Favoritos" nsRouterLink="/favorites" accessibilityLabel="Ver favoritos"></Button>
+    <Button col="3" text="Settings" nsRouterLink="/settings" accessibilityLabel="Abrir ajustes"></Button>
+  </GridLayout>
+</GridLayout>

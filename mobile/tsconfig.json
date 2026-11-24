@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "lib": ["ESNext", "DOM"],
+    "baseUrl": ".",
+    "paths": { "~/*": ["src/*"] }
+  },
+  "angularCompilerOptions": { "strictTemplates": true },
+  "files": ["src/main.ts", "references.d.ts"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "platforms", "test"]
+}

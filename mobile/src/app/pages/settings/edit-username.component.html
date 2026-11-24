@@ -1,0 +1,10 @@
+<ActionBar title="Editar usuario"></ActionBar>
+<StackLayout class="screen" (loaded)="load()">
+  <Label text="Cómo quieres que te llamemos" class="heading" textWrap="true"></Label>
+  <Label text="Entre 2 y 40 caracteres. Se conservará al cerrar la app." class="subtitle" textWrap="true"></Label>
+  <TextField [(ngModel)]="username" hint="Nombre de usuario" maxLength="40"
+    returnKeyType="done" (returnPress)="save()" accessibilityLabel="Nuevo nombre de usuario"></TextField>
+  <Label [text]="error()" [visibility]="error() ? 'visible' : 'collapsed'" class="error" textWrap="true"></Label>
+  <Button text="Guardar nombre" (tap)="save()" class="primary"></Button>
+  <Button text="Cancelar" nsRouterLink="/settings"></Button>
+</StackLayout>

@@ -1,0 +1,19 @@
+<ActionBar title="Settings"></ActionBar>
+<ScrollView (loaded)="load()">
+  <StackLayout class="screen">
+    <Label text="Tu perfil" class="heading"></Label>
+    <StackLayout class="card">
+      <Label text="Nombre de usuario" class="subtitle"></Label>
+      <Label [text]="profile.username()" class="title" textWrap="true"></Label>
+      <Button text="Editar nombre de usuario" nsRouterLink="/settings/username" class="primary"></Button>
+    </StackLayout>
+    <Label text="Conexión al catálogo" class="heading" textWrap="true"></Label>
+    <Label text="Copia la dirección HTTPS de Ngrok, sin /api al final." class="subtitle" textWrap="true"></Label>
+    <TextField [(ngModel)]="baseUrl" hint="https://tu-dominio.ngrok-free.app"
+      autocorrect="false" autocapitalizationType="none" keyboardType="url"
+      accessibilityLabel="URL base de Ngrok"></TextField>
+    <Button text="Guardar URL" (tap)="saveUrl()" class="primary"></Button>
+    <Label [text]="error()" [visibility]="error() ? 'visible' : 'collapsed'" class="error" textWrap="true"></Label>
+    <Label [text]="message()" [visibility]="message() ? 'visible' : 'collapsed'" class="success" textWrap="true"></Label>
+  </StackLayout>
+</ScrollView>

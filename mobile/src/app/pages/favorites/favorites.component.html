@@ -1,0 +1,26 @@
+<ActionBar title="Favoritos"></ActionBar>
+<GridLayout rows="auto,auto,*" class="screen" (loaded)="load()">
+  <StackLayout row="0">
+    <Label text="Tus favoritos" class="heading"></Label>
+    <Label text="Guardados en SQLite. Usa Leer ahora para enviarlos a Inicio." class="subtitle" textWrap="true"></Label>
+    <Button text="Actualizar" (tap)="load()" [isEnabled]="!loading() && pendingIds().length === 0"></Button>
+    <Label [text]="error()" [visibility]="error() ? 'visible' : 'collapsed'" class="error" textWrap="true"></Label>
+    <Label [text]="message()" [visibility]="message() ? 'visible' : 'collapsed'" class="success" textWrap="true"></Label>
+  </StackLayout>
+  <ActivityIndicator row="1" [busy]="loading()" [visibility]="loading() ? 'visible' : 'collapsed'"></ActivityIndicator>
+  <ScrollView row="2">
+    <StackLayout>
+      <Label *ngIf="!loading() && !error() && books().length === 0"
+        text="Aún no tienes favoritos. Guarda un libro desde Buscar." class="empty" textWrap="true"></Label>
+      <StackLayout *ngFor="let book of books()" class="card">
+        <Label [text]="book.title" class="title" textWrap="true"></Label>
+        <Label [text]="book.author" class="author" textWrap="true"></Label>
+        <Label [text]="book.description" class="description" textWrap="true"></Label>
+        <Button text="Leer ahora" (tap)="read(book)" class="primary"
+          [accessibilityLabel]="'Leer ahora: ' + book.title"></Button>
+        <Button text="Quitar de favoritos" (tap)="remove(book)"
+          [isEnabled]="!pendingIds().includes(book.id) && !loading()"></Button>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
+</GridLayout>

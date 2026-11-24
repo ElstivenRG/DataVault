@@ -1,0 +1,11 @@
+node_modules/
+.npm-cache/
+platforms/
+hooks/
+dist/
+.env
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+backend/data/
+mobile/.nsbuild/

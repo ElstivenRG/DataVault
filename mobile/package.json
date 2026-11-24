@@ -1,0 +1,41 @@
+{
+  "name": "biblioteca-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/main.ts",
+  "engines": { "node": ">=24.0.0 <25" },
+  "scripts": {
+    "android": "ns run android",
+    "ios": "ns run ios",
+    "check": "ngc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "test:config": "node --test test/config.test.ts"
+  },
+  "dependencies": {
+    "@angular/animations": "~20.2.0",
+    "@angular/common": "~20.2.0",
+    "@angular/compiler": "~20.2.0",
+    "@angular/core": "~20.2.0",
+    "@angular/forms": "~20.2.0",
+    "@angular/platform-browser": "~20.2.0",
+    "@angular/platform-browser-dynamic": "~20.2.0",
+    "@angular/router": "~20.2.0",
+    "@nativescript/angular": "^20.0.0",
+    "@nativescript/core": "~9.0.0",
+    "@reduxjs/toolkit": "^2.8.2",
+    "rxjs": "~7.8.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~20.2.0",
+    "@angular/compiler-cli": "~20.2.0",
+    "@nativescript/android": "~9.0.0",
+    "@nativescript/ios": "~9.0.0",
+    "@nativescript/types": "~9.0.0",
+    "@nativescript/webpack": "~5.0.25",
+    "@ngtools/webpack": "~20.2.0",
+    "nativescript": "~9.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.8.3"
+  }
+}

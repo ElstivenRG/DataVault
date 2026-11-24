@@ -1,0 +1,11 @@
+{
+  "name": "biblioteca-modulo-3",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix mobile",
+    "test": "npm test --prefix backend && npm test --prefix mobile",
+    "check": "npm run check --prefix backend && npm run check --prefix mobile",
+    "check:files": "node tools/check-files.mjs",
+    "docs": "node tools/export-code.mjs"
+  }
+}

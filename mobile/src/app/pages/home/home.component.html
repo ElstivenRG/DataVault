@@ -1,0 +1,19 @@
+<ActionBar title="Mi biblioteca"></ActionBar>
+<GridLayout rows="auto,*" class="screen">
+  <StackLayout row="0">
+    <Label [text]="'Hola, ' + profile.username()" class="heading" textWrap="true"></Label>
+    <Label text="Lecturas que elegiste con Leer ahora en Favoritos." class="subtitle" textWrap="true"></Label>
+  </StackLayout>
+  <ScrollView row="1">
+    <StackLayout *ngIf="items$ | async as items">
+      <Label *ngIf="items.length === 0" text="Tu lista está vacía. Elige un favorito para comenzar."
+        class="empty" textWrap="true"></Label>
+      <StackLayout *ngFor="let book of items" class="card">
+        <Label [text]="book.title" class="title" textWrap="true"></Label>
+        <Label [text]="book.author" class="author" textWrap="true"></Label>
+        <Label [text]="book.description" class="description" textWrap="true"></Label>
+        <Button text="Quitar de mi lista de lectura" (tap)="remove(book.id)"></Button>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
+</GridLayout>
